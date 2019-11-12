@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        html,body{
+            width:100%;
+            height:100%;
+        }
+
+        body,input,ul,li,button{
+            margin:0;
+            padding:0;
+            border:0;
+        }
+
+        li{
+            list-style: none ;
+            width:100px;
+            height:50px;
+            text-align:center;
+            background:yellow;
+            line-height:50px;
+            border-radius:10px;
+            border: 1px solid pink;
+            float:left;
+            font-size:20px;
+            margin:20px;
+        }
+
+        ul{
+            overflow:hidden;
+        }
+
+        button{
+            border: 1px solid black;
+            font-size: 18px;
+            border-radius: 10px;
+            width:100px;
+            height:40px;
+            line-height:40px;
+            background:red;
+            cursor: pointer;
+            outline:none;
+            display:block;
+            margin:0 auto;
+        }
+
+        .active{
+            transform: scale(1.4);
+            background:red;
+            box-shadow: 2px 2px  #333333,
+                        4px 4px  #333333,
+                        6px 6px  #333333,
+                        8px 8px  #333333,
+                        10px 10px  #333333;
+            transition: all 500ms;
+        }
+
+        
+    </style>
+</head>
+<body>
+
+        <div id="box">
+            <ul>
+                
+            </ul>
+            <button id="btn">
+                点击开始
+            </button>
+        </div>
+
+    <script>
+
+        //面向过程
+        // var names = ['朱百泉','杜志达','屠晓豪','潘宇鑫','潘可成','戴优彬','孙朋','王恬','李艳鹏','王洋洋','王聪','时恒瑞','康鹏飞','高航','李浩','陈鑫','刘博远','黄泽','徐锋','陆宝富','周轶畅','谢寅楚','王立成','乐云方','郭小印','吴云龙','任义飞']
+        // var ul = document.getElementsByTagName('ul')[0];
+        // var btn= document.getElementsByTagName('button')[0];
+        
+
+        // for(var i = 0 ; i < names.length ; i++){
+        //     var li = document.createElement('li');
+        //     li.innerHTML = names[i];
+        //     ul.appendChild(li);
+        // }
+
+        // var lis = document.getElementsByTagName('li')
+
+
+
+        // btn.onclick = function(){
+        //     var rd = parseInt(Math.random()*names.length);   
+        //     for(var j = 0 ; j < names.length ; j++){
+        //         lis[j].className = '' ;
+        //     }
+
+        //     lis[rd].className = 'active';
+        // }
+
+
+        //面向对象
+            function RollCall(names){
+                var me = this;
+                this.box = document.getElementById('box');
+                this.ul = this.box.getElementsByTagName('ul')[0];
+                this.btn= document.getElementById('btn');
+                
+                
+                for( var i = 0 ; i < names.length ; i++){
+                    this.li = document.createElement('li');
+                    this.li.innerHTML = names[i];
+                    this.ul.appendChild(this.li);
+                }
+
+                this.lis = document.getElementsByTagName('li')
+
+
+                btn.onclick = function(){
+                    me.call();
+                }
+
+
+            }
+
+            RollCall.prototype.call = function(){
+
+                var rd = parseInt(Math.random()*names.length);   
+                for(var j = 0 ; j < names.length ; j++){
+                    this.lis[j].className = '' ;
+                }
+                this.lis[rd].className = 'active';
+
+            }
+
+
+
+            var names = ['朱百泉','杜志达','屠晓豪','潘宇鑫','潘可成','戴优彬','孙朋','王恬','李艳鹏','王洋洋','王聪','时恒瑞','康鹏飞','高航','李浩','陈鑫','刘博远','黄泽','徐锋','陆宝富','周轶畅','谢寅楚','王立成','乐云方','郭小印','吴云龙','任义飞'];
+            var rollCall = new RollCall(names);
+
+            //142,143两行也可改写成如下：
+
+            //  var rollCall = new Rollcall(
+            //       ['朱百泉','杜志达','屠晓豪',
+            //        '潘宇鑫','潘可成','戴优彬',
+            //        '孙朋','王恬','李艳鹏','王洋洋',
+            //        '王聪','时恒瑞','康鹏飞','高航',
+            //        '李浩','陈鑫','刘博远','黄泽',
+            //        '徐锋','陆宝富','周轶畅','谢寅楚',
+            //        '王立成','乐云方','郭小印','吴云龙','任义飞'];
+            //       );   
+
+            //    实例化时直接传names数组，
+            //    但是这样写的时候132行（原型里面）获取不到names数组，
+            //    因为此时names没有被定义，而仅仅是作为一个构造函数的参数存在。
+            //    可以通过函数传参解决，方案如下：
+            //
+            //    原124行改写：me.call(names)   把构造函数RollCall的形参names，给到me.call()的形参,将其作为【桥梁】，再作为参数给到原型的call()，让原型里面的names可以获取到；
+            //    原130行改写：...... = function(names){
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // function RollCall(names){
+            //     var oSelf = this;
+            //     oSelf.names = names;
+            //     oSelf.box = document.getElementById("box");
+            //     oSelf.ul  = oSelf.box.getElementsByTagName("ul")[0];
+            //     oSelf.btn = oSelf.box.getElementsByTagName("button")[0];
+            //     for(var i = 0 ; i < names.length ; i++){
+            //         oSelf.li  = document.createElement("li");
+            //         oSelf.ul.appendChild(oSelf.li);
+            //         oSelf.li.innerHTML = names[i];
+            //     }
+            //     oSelf.lis = oSelf.ul.getElementsByTagName("li");
+
+            //     oSelf.btn.onclick = function(){
+            //         oSelf.roll(oSelf.names);
+            // }
+            // }
+            
+
+            // RollCall.prototype.roll = function(names){
+            //     for(var i = 0 ; i < names.length ; i++){
+            //         this.lis[i].className = '';
+            //     }
+            //         this.rd = parseInt(Math.random()*names.length);    //取个随机数
+            //         this.lis[this.rd].className = 'active';
+            //         console.log(this.rd);
+            // }
+
+
+            // var rollCall = new RollCall(
+            //     ['朱百泉','杜志达','屠晓豪','潘宇鑫','潘可成','戴优彬','孙朋','王恬','李艳鹏','王洋洋','王聪','时恒瑞','康鹏飞','高航','李浩','陈鑫','刘博远','黄泽','徐锋','陆宝富','周轶畅','谢寅楚','王立成','乐云方','郭小印','吴云龙','任义飞']
+            // )
+    </script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+html{
+    font-size: 32px;
+}
+
+body,input,button,h1,h2,h3,h4,h5,h6,img{
+    border:0;
+    margin:0;
+    padding:0;
+}
+
+.wrap{
+    width: 23.4375rem;
+}
+
+header{
+    background: url('../images/Sign-In_01.png') no-repeat  0 0;
+    background-size: 100%;
+    height: 21.65625rem;
+    font-size: .8125rem;
+    position: relative;
+    overflow: hidden;
+}
+
+header button{
+    font-size: .8125rem;
+    color: rgb(146, 146, 146);
+    background: none;
+    outline:none;
+}
+
+header div{
+    color: rgb(122, 124, 129);
+}
+
+#headerBottom{
+    display: flex;
+    position:absolute;
+    bottom: 1.25rem;
+    margin:0 auto;
+    width: 14.6875rem;
+    left: 4.53125rem;
+    justify-content:space-between;
+}
+
+.arrow{
+    border-top: .3125rem solid white;
+    border-left: .3125rem solid white;
+    border-right: .3125rem solid rgba(0, 0, 0, 0);
+    border-bottom: .3125rem solid rgba(0, 0, 0, 0);
+    position: absolute;
+    bottom: -0.3125rem;
+    left: 5.3125rem;
+    transform: rotate(45deg);
+}
+
+.active{
+    color: white;
+}
+
+#signInBox{
+    position: relative;
+    /* margin-top: 2.5625rem ; */
+}
+
+
+main input{
+    width: 18.4375rem;
+    height: 2.96875rem;
+    border: 1px solid rgb(227, 227, 227);
+    border-radius: 50px;
+    outline:none;
+    display:block;
+    margin:0 auto;
+    background: rgb(250, 250, 250);
+    text-indent: 4.0625rem;
+    font-size: .78125rem;
+}
+
+#signInBox input:nth-child(1){
+    margin-top: .625rem;
+}
+
+#nameImg{
+    position: absolute;
+    top:  ;
+}
